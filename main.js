@@ -1,51 +1,27 @@
-const add = (x, y) => { return x + y }
-
-const validate = async (event) => {
-  console.log(`triggered validate on ${event.target.id}`)
-  const isValid = event.target.checkValidity()
-  if (isValid) {
-    event.target.nextElementSibling.innerHTML = ''
-  } else {
-    event.target.nextElementSibling.innerHTML = 'Invalid input'
-    event.target.focus()
-  }
+function app()
+{
+     const String=(document.querySelector('#Total').value)
+     const String1=(document.querySelector('#rate').value)
+     const Stringm= (document.querySelector('#st1').value)
+     const comp1= string.length()
+     const comp2= string1.length()
+     const comp3= stringm.length()
+     if(comp1>comp2&& comp2<comp3)
+     {
+       var w= com2
+       }
+  else if(comp3>comp1)
+  {
+      var w= comp1
+      }
+  else
+  {
+    var w = comp3
+    }
+         
+     
+     document.querySelector('#w').innerHTML=`$${w.toFixed(2)}`
+    
+   
 }
-
-const updateWithAdd = async (event) => {
-  document.querySelector('#result').innerHTML = ''
-  if (document.querySelector('#firstNumber').checkValidity() && document.querySelector('#secondNumber').checkValidity()) {
-    const regex = /[^a-zA-Z_]/g
-    const s = document.querySelector('#guest').value.replace(regex, '')
-    const i = parseInt(document.querySelector('#firstNumber').value)
-    const j = parseInt(document.querySelector('#secondNumber').value)
-    const ans = `${s}, your sum is ${add(i, j)}.`
-    document.querySelector('#result').innerHTML = ans
-  }
-}
-
-const updateWithJoke = async (event) => {
-  document.querySelector('#result').innerHTML = ''
-  const url = 'https://api.icndb.com/jokes/random?limitTo=[nerdy]'
-  const response = await fetch(url)
-  const obj = await response.json()
-  const joke = obj.value.joke || 'No joke for you.'
-  document.querySelector('#result').innerHTML = joke
-}
-
-// delegate to dynamic elements (e.g. when testing)
-// focusout is like blur, but it bubbles up
-
-document.addEventListener('focusout', event => {
-  if ((event.target && event.target.id === 'firstNumber') ||
-    (event.target && event.target.id === 'secondNumber')) {
-    validate(event)
-  }
-})
-
-document.addEventListener('click', event => {
-  if (event.target && event.target.id === 'addButton') { updateWithAdd(event) }
-})
-
-document.addEventListener('click', event => {
-  if (event.target && event.target.id === 'getJokeButton') { updateWithJoke(event) }
-})
+     document.querySelector('#calculate').addEventListener('click',app)
